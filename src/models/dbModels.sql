@@ -27,4 +27,3 @@ CREATE TABLE files (
     uploaded_by INTEGER NOT NULL REFERENCES users(id),
     deleted BOOLEAN DEFAULT FALSE
 );
-

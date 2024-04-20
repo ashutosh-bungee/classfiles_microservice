@@ -13,10 +13,9 @@ const { isTutor } = require('../middlewares/roleCheck');
 const router = express.Router();
 
 router.post('/',authenticateToken, isTutor, uploadFile);
-router.put('/:fileId',authenticateToken, renameFile);
-router.delete('/:fileId',authenticateToken, deleteFile);
-router.get('/class/:classId',authenticateToken ,getFilesByClass);
-router.get('/search',authenticateToken ,filterFiles);
+router.put('/:fileId',authenticateToken, isTutor, renameFile);
+router.delete('/:fileId',authenticateToken, isTutor, deleteFile);
+router.get('/class/:classId',authenticateToken, getFilesByClass);
 router.get('/feed', authenticateToken, getFilesFeed);
 
 module.exports = router;

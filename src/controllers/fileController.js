@@ -68,31 +68,6 @@ exports.getFilesByClass = async (req, res) => {
     }
 };
 
-exports.filterFiles = async (req, res) => {
-    const { classId, fileType, search } = req.query;
-
-    try {
-        let query = 'SELECT * FROM files WHERE class_id = $1 AND deleted = FALSE';
-        let params = [classId];
-        
-        if (fileType) {
-            query += ' AND file_type = $2';
-            params.push(fileType);
-        }
-        
-        if (search) {
-            query += fileType ? ' AND file_name ILIKE $3' : ' AND file_name ILIKE $2';
-            params.push(`%${search}%`);
-        }
-
-        const filteredFiles = await pool.query(query, params);
-        res.json(filteredFiles.rows);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Server error while filtering files');
-    }
-};
-
 
 exports.getFilesFeed = async (req, res) => {
     const { classId, fileType, search } = req.query;

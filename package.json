@@ -2,12 +2,14 @@
   "name": "classfiles_microservice",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ashutosh",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
